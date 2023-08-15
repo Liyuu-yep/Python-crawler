@@ -1,0 +1,100 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  text-align: center;
+  color: #fff;
+  padding: 20px;
+}
+
+.content {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+.profile, .password, .follow {
+  border: 1px solid #ddd;
+  padding: 20px;
+  width: 30%;
+  box-sizing: border-box;
+}
+.user-box{
+  height: 40px;
+  width: 40px;
+  float: left
+}
+
+.user-box:hover{
+  height: 45px;
+  width: 45px;
+}
+
+
+img{
+  width: 100%;
+  object-fit: cover;
+}
+#header {
+  background-color: rgba(18, 18, 18, 1);
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+}
+#menu {
+  display: flex;
+  justify-content: center;
+  background-color: #555;
+  padding: 10px;
+}
+.menu-item {
+  margin: 0 20px;
+  color: #fff;
+  cursor: pointer;
+}
+#content {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+.menu-content {
+  text-align: center;
+  padding: 15px; /* 调整为更大的值 */
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.menu-content h4 {
+  font-size: 24px; /* 调整标题字体大小 */
+  margin: 0;
+}
+.menu-content:hover {
+  background-color: #f4f4f4;
+}
+.input-box {
+  margin: 10px 0;
+}
+label {
+  display: block;
+  font-weight: bold;
+}
+input {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+.follow-options {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  padding: 5px;
+  background-color: #eee;
+  border-radius: 3px;
+}

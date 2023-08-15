@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/plugins/bootstrap-3.4.1-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../static/css/MainPage.css">
+    <link rel="stylesheet" href="../static/css/S-mainPage.css">
+    <style>
+
+        .user-box{
+            height: 40px;
+            width: 40px;
+            float: left
+        }
+
+        .user-box:hover{
+            height: 45px;
+            width: 45px;
+        }
+
+
+        img{
+            width: 100%;
+            object-fit: cover;
+        }
+        #header {
+            background-color: rgba(18, 18, 18, 1);
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+        #menu {
+            display: flex;
+            justify-content: center;
+            background-color: #555;
+            padding: 10px;
+        }
+        .menu-item {
+            margin: 0 20px;
+            color: #fff;
+            cursor: pointer;
+        }
+        #content {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+        .menu-content {
+            text-align: center;
+            padding: 15px; /* 调整为更大的值 */
+            border-bottom: 1px solid #ccc;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .menu-content h4 {
+            font-size: 24px; /* 调整标题字体大小 */
+            margin: 0;
+        }
+        .menu-content:hover {
+            background-color: #f4f4f4;
+        }
+        .input-box {
+            margin: 10px 0;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        .follow-options {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            padding: 5px;
+            background-color: #eee;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+<!--这是首页导航栏部分-->
+<div class="header">
+    <div class="container">
+        <div class="left">
+                    <a class="word1" href="/mainpage/">VICTORY</a>
+<!--                    <a class="word2"  style="margin-left: 60px;">首页</a>-->
+                    <a class="word2" href="/mainpage2/">个人中心</a>
+                    <a class="word2" href="/fanjuinformation/">番剧信息</a>
+                    <a class="word2" href="">数据分析</a>
+                    <a class="word2" href="/ranklist/">总排行榜</a>
+                </div>
+        <div class="right">
+            <!--搜索框-->
+            <div class="search-container">
+                <div class="search-icon">
+                    <a class="glyphicon glyphicon-search" style=" text-decoration: none"></a>
+                </div>
+                <input class="search-input" type="text" placeholder="请输入搜索关键字">
+            </div>
+            <!--搜索框-->
+            <!--用户框-->
+            <div class="user-box">
+                <a>
+                    <img src="/static/img/23.jpg" alt="" class="img-circle">
+                </a>
+            </div>
+
+        </div>
+        <div style="clear:both"></div>
+    </div>
+</div>
+<!--导航栏到此结束-->
+<div id="header">
+    <h1>个人中心</h1>
+</div>
+<div id="menu">
+    <div class="menu-item">个人资料</div>
+    <div class="menu-item">修改密码</div>
+    <div class="menu-item">我的关注</div>
+</div>
+<div id="content">
+    <div id="profile" class="menu-content">
+        <div class="input-box">
+            <label for="username">用户名：</label>
+            <input type="text" id="username">
+        </div>
+        <div class="input-box">
+            <label for="email">邮箱：</label>
+            <input type="email" id="email">
+        </div>
+        <div class="input-box">
+            <label for="phone">手机号码：</label>
+            <input type="tel" id="phone">
+        </div>
+    </div>
+    <div id="change-password" class="menu-content" style="display: none;">
+        <div class="input-box">
+            <label for="new-password">请输入新密码：</label>
+            <input type="password" id="new-password">
+        </div>
+        <div class="input-box">
+            <label for="confirm-password">请再次输入新密码：</label>
+            <input type="password" id="confirm-password">
+        </div>
+    </div>
+    <div id="my-follow" class="menu-content" style="display: none;">
+        <div class="follow-options">
+            <select>
+                <option value="followed">已关注</option>
+                <option value="not-followed">未关注</option>
+            </select>
+        </div>
+        <div class="followed-list">
+            <!-- 以列表形式显示已关注内容 -->
+        </div>
+        <div class="follow-options">
+            <select>
+                <option value="all">全部关注</option>
+            </select>
+        </div>
+        <div class="follow-list">
+            <!-- 以列表形式显示番剧 -->
+             <div class="anime-item">
+                <img src="placeholder.jpg" alt="番剧图片">
+                <div class="anime-info">
+                    <h3>番剧名</h3>
+                    <p>番剧简介</p>
+                </div>
+            </div>
+            <div class="anime-item">
+                <img src="placeholder.jpg" alt="番剧图片">
+                <div class="anime-info">
+                    <h3>番剧名</h3>
+                    <p>番剧简介</p>
+                </div>
+            </div>
+            <div class="anime-item">
+                <img src="placeholder.jpg" alt="番剧图片">
+                <div class="anime-info">
+                    <h3>番剧名</h3>
+                    <p>番剧简介</p>
+                </div>
+            </div>
+            <!-- 重复上面的结构以显示多个番剧 -->
+        </div>
+    </div>
+</div>
+<script>
+    const menuItems = document.querySelectorAll('.menu-item');
+    const menuContents = document.querySelectorAll('.menu-content');
+
+    menuItems.forEach((item, index) => {
+        item.addEventListener('click', () => {
+            menuContents.forEach(content => content.style.display = 'none');
+            menuContents[index].style.display = 'block';
+        });
+    });
+</script>
+</body>
+</html>

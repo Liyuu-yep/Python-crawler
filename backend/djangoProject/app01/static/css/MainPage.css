@@ -1,0 +1,144 @@
+/* 去掉body的边距 */
+body {
+    margin: 0;
+    overflow: hidden; /* 防止图片溢出 */
+}
+a {
+    text-decoration: none; /* 去除下划线 */
+}
+.header {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 72px;
+    opacity: 1;
+    background: rgba(18, 18, 18, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 80px 0 80px;
+
+}
+/* 让中间内容居中 */
+.container {
+    width: 1280px;
+    margin: 0 auto;     /* 上下为0, 左右为auto */
+}
+.left{
+    float:left;
+
+}
+.right{
+    float: right;
+}
+/*victory字体  字体样式代办*/
+.word1{
+    margin-left: 3px;
+    margin-top: 3px;
+    width: 84px;
+    height: 36px;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 36px;
+    text-align: left;
+    vertical-align: middle;
+    color: rgba(255, 255, 255, 1);
+}
+.word1:hover{
+    text-decoration: none;
+    color: rgba(255, 255, 255, 1);
+}
+/*导航栏左边字体样式*/
+.word2{
+    margin-left: 32px;
+    width: 32px;
+    height: 32px;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 0 4px 0;
+    color: rgba(255, 255, 255, 1);
+    text-decoration: none;
+}
+/*颜色之后细改*/
+.word2:hover{
+    font-size: 104%;
+    color: #8a6d3b;
+    text-decoration: none;
+}
+/*导航栏右边字体*/
+
+
+.word4{
+    padding: 8px 20px 8px 20px;
+    margin: auto;
+    width: 32px;
+    height: 24px;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 40px;
+    color: rgba(255, 255, 255, 1);
+    text-align: left;
+    vertical-align: top;
+    text-decoration: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+}
+.word4:hover{
+    font-size: 119%;
+    color: #8a6d3b;
+    text-decoration: none;
+}
+/*这是搜索框*/
+.search-container {
+    left: 384px;
+    top: 0;
+    width: 200px;
+    height: 40px;
+    border-radius: 292px;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 8px 16px 8px 16px;
+    float: left
+}
+
+.search-icon {
+    left: 16px;
+    top: 12px;
+    width: 16px;
+    height: 16px;
+    opacity: 1;
+    display: flex;
+}
+
+.search-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 5px;
+    color: rgba(255, 255, 255, 0.6);
+    text-align: left;
+    vertical-align: top;
+}
+/*图片框*/
+.picture1{
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 800px;
+    opacity: 1;
+    display: flex;
+}
+.picture2{
+    width: 100%;
+    height: 100%;
+
+    top: 0;
+    left: 0;
+}

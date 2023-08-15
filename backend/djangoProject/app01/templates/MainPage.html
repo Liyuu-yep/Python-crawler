@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../static/plugins/bootstrap-3.4.1-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../static/css/MainPage.css">
+    <link rel="stylesheet" href="../static/css/login.css">
+    <style>
+    </style>
+</head>
+<body>
+<!--这是首页导航栏部分-->
+    <div class="header">
+        <div class="container">
+                <div class="left">
+                    <a class="word1" href="/mainpage/">VICTORY</a>
+<!--                    <a class="word2"  style="margin-left: 60px;">首页</a>-->
+                    <a class="word2" href="/mainpage2/">个人中心</a>
+                    <a class="word2" href="/fanjuinformation/">番剧信息</a>
+                    <a class="word2" href="">数据分析</a>
+                    <a class="word2" href="/ranklist/">总排行榜</a>
+
+                </div>
+                <div class="right">
+                    <!--搜索框-->
+                    <div class="search-container">
+                        <div class="search-icon">
+                            <a class="glyphicon glyphicon-search" style=" text-decoration: none"></a>
+                        </div>
+                        <input class="search-input" type="text" placeholder="请输入搜索关键字">
+                    </div>
+                    <!--搜索框-->
+                    <!--登录弹窗-->
+                    <input type="checkbox" id="display">
+                    <label for="display" class="display-btn" >登录</label>
+                    <div class="container-login">
+                        <label for="display" class="close-btn" title="close">&times;</label>
+                        <h1>登录账号</h1>
+                        <div>
+                            <style>
+                                h5{
+                                    color: red;
+                                }
+                            </style>
+                            {% for message in messages %}
+                                <h5>{{message}}</h5>
+                            {% endfor %}
+                        </div>
+
+                        <form action="/signin/" method="POST">
+                            {% csrf_token %}
+                            <label>用户名</label>
+                            <input type="text" name="username">
+                            <label>密码</label>
+                            <input type="password" name="password">
+
+                            <a class="login-a" href="#">忘记密码?</a>
+                            <button type="submit">登录</button>
+                            <div class="forgot">
+                                没有账号？
+                                <a class="login-a" href="#">注册</a>
+                            </div>
+                        </form>
+                    </div>
+                    <!--注册弹窗-->
+                    <input type="checkbox" id="display2">
+                    <label for="display2" class="display-btn2" href="/signup/">注册</label>
+                    <div class="container-register">
+                        <label for="display2" class="close-btn" title="close">&times;</label>
+                        <h1>注册账号</h1>
+
+                        <div>
+                            <style>
+                                h5{
+                                    color: red;
+                                }
+                            </style>
+                            {% for message in messages %}
+                                <h5>{{message}}</h5>
+                            {% endfor %}
+                        </div>
+
+                        <form action="/signup/" method="POST">
+                            {% csrf_token %}
+                            <label>用户名</label>
+                            <input type="text" name="username">
+
+                            <label>电子邮箱</label>
+                            <input type="text" name="email">
+
+                            <label>密码</label>
+                            <input type="password" name="password">
+
+                            <label>确认密码</label>
+                            <input type="password" name="password2">
+
+
+                            <button type="submit">注册</button>
+
+                            <div class="forgot">已有账号？<a class="login-a" href="#">登录</a> </div>
+                        </form>
+                    </div>
+
+                </div>
+                <div style="clear:both"></div>
+        </div>
+    </div>
+<!--导航栏到此结束-->
+<!--芝士大图，暂时占位-->
+<div class="picture1">
+    <img src="/static/img/9.jpg" class="picture2" alt="">
+</div>
+<!--大图结束-->
+<!--芝士登录弹窗-->
+<script>
+    /*点击登录会自动关闭注册弹窗，反之*/
+    const loginCheckbox = document.getElementById('display');
+    const registerCheckbox = document.getElementById('display2');
+
+    loginCheckbox.addEventListener('change', () => {
+        if (loginCheckbox.checked) {
+            // 登录复选框被选中，显示登录弹窗，同时关闭注册弹窗
+            registerCheckbox.checked = false;
+        }
+    });
+
+    registerCheckbox.addEventListener('change', () => {
+        if (registerCheckbox.checked) {
+            // 注册复选框被选中，显示注册弹窗，同时关闭登录弹窗
+            loginCheckbox.checked = false;
+        }
+    });
+    /*点击登录弹窗中的注册会跳转注册弹窗，反之*/
+    const openRegisterLink = document.querySelector('.container-login .forgot a');
+    const openLoginLink = document.querySelector('.container-register .forgot a');
+
+    openRegisterLink.addEventListener('click', (event) => {
+        event.preventDefault();
+        loginCheckbox.checked = false;
+        registerCheckbox.checked = true;
+    });
+
+    openLoginLink.addEventListener('click', (event) => {
+        event.preventDefault();
+        registerCheckbox.checked = false;
+        loginCheckbox.checked = true;
+    });
+    /**/
+    //固定悬浮
+     document.addEventListener('DOMContentLoaded', function() {
+        // 获取登录复选框和链接元素
+        const loginCheckbox = document.getElementById('display');
+        const personalCenterLink = document.querySelector('.word2[href="/mainpage2/"]');
+        const fanJuInformationLink = document.querySelector('.word2[href="/fanjuinformation/"]');
+        const dataAnalysisLink = document.querySelector('.word2[href=""]');
+        const overallRankingsLink = document.querySelector('.word2[href="/ranklist/"]');
+
+        // 添加事件监听器来在点击链接时显示登录弹窗
+        personalCenterLink.addEventListener('click', (event) => {
+            event.preventDefault(); // 阻止默认的链接行为
+            loginCheckbox.checked = true; // 显示登录弹窗
+        });
+
+        fanJuInformationLink.addEventListener('click', (event) => {
+            event.preventDefault();
+            loginCheckbox.checked = true;
+        });
+
+        dataAnalysisLink.addEventListener('click', (event) => {
+            event.preventDefault();
+            loginCheckbox.checked = true;
+        });
+
+        overallRankingsLink.addEventListener('click', (event) => {
+            event.preventDefault();
+            loginCheckbox.checked = true;
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const loginCheckbox = document.getElementById('display');
+        const registerCheckbox = document.getElementById('display2');
+
+        const personalCenterLink = document.querySelector('.word2[href="/mainpage2/"]');
+        const fanJuInformationLink = document.querySelector('.word2[href="/fanjuinformation/"]');
+        const dataAnalysisLink = document.querySelector('.word2[href=""]');
+        const overallRankingsLink = document.querySelector('.word2[href="/ranklist/"]');
+
+        personalCenterLink.addEventListener('click', (event) => {
+            event.preventDefault();
+            // 显示登录弹窗，同时关闭注册弹窗
+            loginCheckbox.checked = true;
+            registerCheckbox.checked = false;
+        });
+
+        fanJuInformationLink.addEventListener('click', (event) => {
+            event.preventDefault();
+            loginCheckbox.checked = true;
+            registerCheckbox.checked = false;
+        });
+
+        dataAnalysisLink.addEventListener('click', (event) => {
+            event.preventDefault();
+            loginCheckbox.checked = true;
+            registerCheckbox.checked = false;
+        });
+
+        overallRankingsLink.addEventListener('click', (event) => {
+            event.preventDefault();
+            loginCheckbox.checked = true;
+            registerCheckbox.checked = false;
+        });
+    });
+</script>
+</body>
+</html>

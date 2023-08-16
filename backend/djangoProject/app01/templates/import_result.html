@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Import Result</title>
+</head>
+<body>
+  <h1>Import Result</h1>
+
+  <p>{{ successful_imports }} records imported successfully.</p>
+  <p>{{ failed_imports }} records failed to import.</p>
+
+  {% if error_messages %}
+    <h2>Error Messages:</h2>
+    <ul>
+      {% for message in error_messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</body>
+</html>

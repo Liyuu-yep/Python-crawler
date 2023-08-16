@@ -9,10 +9,20 @@ User = get_user_model()
 
 class Profile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    email = models.EmailField(max_length=100, null=True, blank=True, verbose_name="邮箱")
     id_user = models.IntegerField()
-    bio = models.TextField(blank=True)
-    profile_img = models.ImageField(upload_to='profile_images', default='blank-profile-picture.png')
+    profile_img = models.ImageField(upload_to='profile_images', default='img.png')
     # 个人简介
+
+
+class ACG(models.Model):
+    acg_name = models.CharField(max_length=50)
+    acg_second_name = models.CharField(max_length=50)
+    acg_url = models.URLField()
+    acg_follow = models.CharField(max_length=50)
+    acg_core = models.CharField(max_length=50, null=True, blank=True)
+    acg_progress = models.CharField(max_length=50)
+    acg_bool = models.BooleanField(default=True)
+    acg_img = models.URLField()
+
 
 

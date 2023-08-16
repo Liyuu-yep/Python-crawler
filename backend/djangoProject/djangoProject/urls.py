@@ -38,4 +38,10 @@ urlpatterns = [
     path('mainpage2/', views.mainpage2),
 
     path('selfmainpage/', views.self_mainpage),
+
+    path('password_reset/', views.reset_password, name='reset_password'),
+
+    path('password_reset/<int:user_pk>/<str:token>/', views.reset_password_confirm, name='reset_password_confirm'),
+
+    path('import/', views.import_excel, name='import_excel'),
 ]

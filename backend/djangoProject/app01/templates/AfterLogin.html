@@ -2,91 +2,122 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <meta name="referrer" content="no-referrer" />
+    <title>VICTORY - ( ゜- ゜)つロ 乾杯~ </title>
+    <link rel="icon" href="../static/img/head123.png">
     <link rel="stylesheet" href="../static/plugins/bootstrap-3.4.1-dist/css/bootstrap.css">
     <link rel="stylesheet" href="../static/css/MainPage.css">
+    <link rel="stylesheet" href="../static/css/Rotation-chart.css">
     <style>
-        .user-box{
-            height: 40px;
-            width: 40px;
-            float: left
-        }
-
-        .user-box:hover{
-           height: 45px;
-            width: 45px;
-        }
-
-
         img{
             width: 100%;
             object-fit: cover;
         }
-        .search-container{
-            position: absolute;
-            width: 500px;
-            height: 50px;
-            top:150px;
-            left: 500px;
-            background-color: #ffffff;
-        }
         #span{
-            position: absolute;
             top:230px;
-            left: 650px;
+            text-align: center;/*水平居中*/
             color:#ffffff;
         }
         hr{
-            position: absolute;
-            left: 500px;
             width: 500px;
-            top:280px;
+            margin: 20px auto 0;
         }
     </style>
 </head>
 <body>
 <!--这是首页导航栏部分-->
-    <div class="header">
-        <div class="container">
-                <div class="left">
-                    <a class="word1">VICTORY</a>
-<!--                    <a class="word2"  style="margin-left: 60px;">首页</a>-->
-                    <a class="word2" href="/mainpage2/">个人中心</a>
-                    <a class="word2" href="/fanjuinformation/">番剧信息</a>
-                    <a class="word2" href="">数据分析</a>
-                    <a class="word2" href="/ranklist/">总排行榜</a>
-                </div>
-                <div class="right">
-                    <!--搜索框-->
-                    <div class="search-container">
-                        <div class="search-icon">
-                            <a class="glyphicon glyphicon-search" style=" text-decoration: none"></a>
-                        </div>
-                        <input class="search-input" type="text" placeholder="请输入搜索关键字">
-                    </div>
-                    <!--搜索框-->
-                    <div id="span">
-                        <h1>总排行榜</h1>
-                    </div>
-                    <hr>
-                    <!--用户框-->
-                    <div class="user-box">
-                        <a>
-                            <img src="/static/img/23.jpg" alt="" class="img-circle">
-                        </a>
-                    </div>
-
-                </div>
-                <div style="clear:both"></div>
+<div class="header">
+    <div class="container">
+        <div class="left">
+            <a class="word1">VICTORY</a>
+            <!--                    <a class="word2"  style="margin-left: 60px;">首页</a>-->
+            <a class="word2" href="/mainpage2/">个人中心</a>
+            <a class="word2" href="/fanjuinformation/">番剧信息</a>
+            <a class="word2" href="/analyse/">数据分析</a>
+            <a class="word2" href="/afterlogin/">总排行榜</a>
         </div>
+        <div class="right">
+
+            <!--用户框-->
+            <div class="dropdown">
+                <div class="user-box">
+                    <a>
+                        <img src="{{ user_profile.profileimg.url }}" alt="" class="img-circle " id="userAvatar">
+                        <div class="dropdown-content">
+                            <a href="/mainpage2/">个人中心</a>
+                            <a href="/mainpage/">注销退出</a>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+        <div style="clear:both"></div>
     </div>
+</div>
+
 <!--导航栏到此结束-->
 <!--芝士大图，暂时占位-->
-<div class="picture1">
-    <img src="/static/img/9.jpg" class="picture2" alt="">
+
+<div class="background-container">
+    <div class="content">
+
+        <div id="span">
+            <h1>总排行榜</h1>
+            <!--搜索框-->
+            <form method="get" action="{% url 'result' %}">
+                <div class="search-container2">
+                    <div class="search-icon">
+                        <a class="glyphicon glyphicon-search" style=" text-decoration: none"></a>
+                    </div>
+                    <input class="search-input2" type="text" name="q" placeholder="请输入搜索关键字">
+                </div>
+            </form>
+
+            <!--搜索框-->
+
+        </div>
+        <hr>
+        <!--轮播图-->
+        <div class="centered-container">
+            <div class="swiper">
+                <input class="input2" type="radio" name="btn" id="btn1" checked />
+                <input class="input2" type="radio" name="btn" id="btn2" />
+                <input class="input2" type="radio" name="btn" id="btn3" />
+                <input class="input2" type="radio" name="btn" id="btn4" />
+                <input class="input2" type="radio" name="btn" id="btn5" />
+                <input class="input2" type="radio" name="btn" id="btn6" />
+                <input class="input2" type="radio" name="btn" id="btn7" />
+                <label for="btn1"></label>
+                <label for="btn2"></label>
+                <label for="btn3"></label>
+                <label for="btn4"></label>
+                <label for="btn5"></label>
+                <label for="btn6"></label>
+                <label for="btn7"></label>
+                <ul>
+                    {% for acg in acgs %}
+                        <li>
+                            <a href="{{ acg.acg_url }}" target="_blank">
+                                <div class="anime-edging">
+                                    <div class="anime-inform">
+                                    <div class="anime-img">
+                                        <img src="{{ acg.acg_img }}" alt="">
+                                    </div>
+                                        <div class="anime-title">{{ acg.acg_name }}</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    {% endfor %}
+
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
 <!--大图结束-->
 <!--芝士登录弹窗-->
-
-</body>
-</html>
+<script src="../static/js/S-MainPage2.js"></script>
+    </body>
+    </html>

@@ -32,7 +32,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('id_user', models.IntegerField()),
-                ('profile_img', models.ImageField(default='img.png', upload_to='profile_images')),
+                ('profile_img', models.ImageField(default='23.jpg', upload_to='profile_images')),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),

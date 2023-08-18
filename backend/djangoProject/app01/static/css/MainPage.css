@@ -1,7 +1,7 @@
 /* 去掉body的边距 */
 body {
     margin: 0;
-    overflow: hidden; /* 防止图片溢出 */
+    overflow-y: scroll;
 }
 a {
     text-decoration: none; /* 去除下划线 */
@@ -102,9 +102,20 @@ a {
     justify-content: flex-start;
     align-items: center;
     padding: 8px 16px 8px 16px;
-    float: left
+    float: left;
+    margin-right: 30px;
 }
 
+.search-container2 {
+    width: 300px;
+    height: 40px;
+    border-radius: 292px;
+    background: rgba(255, 255, 255, 0.5);
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    margin: 20px auto 0; /* 居中对齐并添加上方间距 */
+}
 .search-icon {
     left: 16px;
     top: 12px;
@@ -122,9 +133,25 @@ a {
     font-size: 16px;
     line-height: 24px;
     padding: 5px;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.9);
     text-align: left;
     vertical-align: top;
+}
+.search-input2 {
+    flex: 1;
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 5px;
+    color: black;
+    text-align: left;
+    vertical-align: top;
+}
+/* 添加伪类选择器，用于在输入框获得焦点时清除预览文本 */
+.search-input::placeholder {
+    color: rgba(255, 255, 255, 0.3); /* 灰色预览文本颜色 */
 }
 /*图片框*/
 .picture1{
@@ -142,3 +169,71 @@ a {
     top: 0;
     left: 0;
 }
+
+.user-box{
+    height: 40px;
+    width: 40px;
+    background-size: cover;
+    float: left;
+    z-index: 2;
+}
+
+.user-box:hover{
+    height: 45px;
+    width: 45px;
+}
+
+
+#userAvatar{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.dropdown{
+    position: relative;;
+    display: inline-block;
+    float:left;
+}
+.dropdown-content{
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 100px;
+    box-shadow:  0px 8px 16px 0px rgba(0,0,0,0.2);
+    left: 50%; /* 水平居中 */
+    transform: translateX(-50%); /* 平移宽度的一半 */
+    top: 100%; /* 菜单显示在触发元素的下方 */
+    z-index: 3;
+}
+.dropdown-content a{
+    color: #000000;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.dropdown-content a:hover{background-color: #f1f1f1}
+.dropdown:hover .dropdown-content{
+    display: block;
+}
+
+.background-container {
+    position: relative;
+    width: 100%;
+    height: 800px; /* 设置容器的高度 */
+    background-image: url('../../static/img/9.jpg'); /* 替换为您的图片的URL */
+    background-size: cover; /* 图片将被缩放以覆盖整个容器 */
+    background-repeat: no-repeat; /* 防止图片重复平铺 */
+}
+
+/*.content {*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    right: 0;*/
+/*    bottom: 0;*/
+/*    padding: 20px;*/
+/*    box-sizing: border-box;*/
+/*    overflow: auto;*/
+/*}*/

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer" />
+    <title>结果</title>
+    <link rel="icon" href="../static/img/head123.png">
+    <link rel="stylesheet" href="../static/plugins/bootstrap-3.4.1-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../static/css/MainPage.css">
+    <link rel="stylesheet" href="../static/css/ranking-list.css">
+    <script src="../static/js/S-MainPage2.js"></script>
+    <style>
+        .user-box{
+            height: 40px;
+            width: 40px;
+            float: left
+        }
+
+        .user-box:hover{
+            height: 45px;
+            width: 45px;
+        }
+
+
+        img{
+            width: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <div class="container">
+        <div class="left">
+            <a class="word1" href="">VICTORY</a>
+<!--            <a class="word2"  style="margin-left: 60px;">首页</a>-->
+            <a class="word2" href="/mainpage2/">个人中心</a>
+            <a class="word2" href="/fanjuinformation/">番剧信息</a>
+            <a class="word2" href="/analyse/">数据分析</a>
+            <a class="word2" href="/afterlogin/">总排行榜</a>
+        </div>
+        <div class="right">
+            <!--搜索框-->
+            <div class="search-container">
+                <div class="search-icon">
+                    <a class="glyphicon glyphicon-search" style=" text-decoration: none"></a>
+                </div>
+                <input class="search-input" type="text" placeholder="请输入搜索关键字">
+            </div>
+
+            <!--搜索框-->
+            <!--用户框-->
+            <div class="dropdown">
+                <div class="user-box">
+                    <a>
+                        <img src="{{ user_profile.profileimg.url }}" alt="" class="img-circle " id="userAvatar">
+                        <div class="dropdown-content">
+                            <a href="/mainpage2/">个人中心</a>
+                            <a href="/mainpage/">注销退出</a>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+        <div style="clear:both"></div>
+    </div>
+</div>
+
+
+<div class="header">
+    <h1>番剧信息</h1>
+</div>
+
+<div>
+    <ul class="content">
+        {% for acg in data %}
+            <li>
+                <a href="{{ acg.acg_url }}" target="_blank">
+                    <img src="{{ acg.acg_img }}">
+                </a>
+                <div class="leftInfo">
+                <h3 class="FanJuName">番剧名:</h3>
+                    <p class="FanJuNameContent">《{{ acg.acg_name }}》</p>
+                 <p class="FanJuInfo">番剧简介:</p>
+                    <p class="FanJuInfoContent">{{ acg.acg_second_name }}</p>
+                </div>
+                <h5 class="score">评分:{{ acg.acg_core }}</h5>
+                <h5 class="play">追番人数: {{ acg.acg_follow }}</h5>
+                <h5 class="likes">更新进度:{{ acg.acg_progress }}</h5>
+
+            </li>
+            <hr>
+            {% empty %}
+            {{ NO }}
+        {% endfor %}
+    </ul>
+</div>
+<style>
+    .content{
+    height: 100px;
+    /*width: 100%;*/
+    display: block;
+}
+li{
+    height: 170px;
+    width: 100%;
+    display: flex;
+}
+li img{
+    height: 130px;
+    width: 170px;
+}
+hr{
+    width: 100%;
+
+    color: #999999;
+}
+
+body {
+    margin: 0;
+    overflow-y: scroll;
+}
+
+.FanJuName{
+    position: relative;
+    width: 100px;
+    margin: 0;
+    padding: 0;
+    top:10px;
+}
+.FanJuInfo{
+    position: relative;
+    font-weight: bold;
+    top:5px;
+}
+/*.leftInfo{*/
+/*    display: block;*/
+/*}*/
+.FanJuInfoContent{
+    position: relative;
+    left:30px;
+    width: 900px;
+}
+.leftInfo1{
+    display: block;
+}
+.FanJuNameContent{
+    position: relative;
+    left: 30px;
+    top:10px;
+}
+.score{
+    position: relative;
+    top: 90px;
+    left: -30px;
+}
+.play{
+    position: relative;
+    top:90px;
+    left: -20px;
+}
+.likes{
+    position: relative;
+    top: 90px;
+    left: -10px;
+}
+
+</style>
+</body>
+</html>
+

@@ -1,0 +1,154 @@
+
+.swiper {
+	/* 相对定位 */
+	position: relative;
+	padding-top: 40px;
+	width: 1200px;
+	height: 600px;
+	overflow: hidden;
+}
+.input2 {
+	display: none;
+}
+label {
+	position: absolute;
+	bottom: 30px;
+	width: 20px;
+	height: 20px;
+	border: 3px solid #fff;
+	border-radius: 50%;
+	background-color: #fff;
+}
+label[for="btn1"] {
+	left: 35%;
+}
+label[for="btn2"] {
+	left: 40%;
+}
+label[for="btn3"] {
+	left: 45%;
+}
+label[for="btn4"] {
+	left: 50%;
+}
+label[for="btn5"] {
+	left: 55%;
+}
+label[for="btn6"] {
+	left: 60%;
+}
+label[for="btn7"] {
+	left: 65%;
+}
+ul {
+	/* 让li水平排列 */
+	display: flex;
+	/* 自动计算宽度 */
+	width: calc(857px * 7);
+	/* 过渡时间 */
+	transition: all 0.5s;
+}
+li {
+	list-style-type: none;
+}
+#btn1:checked ~ ul {
+	margin-left: 0;
+}
+#btn2:checked ~ ul {
+	margin-left: -882px;
+}
+#btn3:checked ~ ul {
+	margin-left: calc(-875px * 2);
+}
+#btn4:checked ~ ul {
+	margin-left: calc(-872px * 3);
+}
+#btn5:checked ~ ul {
+	margin-left: calc(-870px * 4);
+}
+#btn6:checked ~ ul {
+	margin-left: calc(-868px * 5);
+}
+#btn7:checked ~ ul {
+	margin-left: calc(-872px * 6);
+}
+#btn1:checked ~ label[for="btn1"] {
+	background-color: #f00;
+}
+#btn2:checked ~ label[for="btn2"] {
+	background-color: #f00;
+}
+#btn3:checked ~ label[for="btn3"] {
+	background-color: #f00;
+}
+#btn4:checked ~ label[for="btn4"] {
+	background-color: #f00;
+}
+#btn5:checked ~ label[for="btn5"] {
+	background-color: #f00;
+}
+#btn6:checked ~ label[for="btn6"] {
+	background-color: #f00;
+}
+#btn7:checked ~ label[for="btn7"] {
+	background-color: #f00;
+}
+
+.centered-container {
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    width: 100%; /* 宽度占满父容器 */
+    max-width: 1300px; /* 设置最大宽度，适应不同屏幕尺寸 */
+    margin: 0 auto; /* 左右居中 */
+    box-sizing: border-box; /* 可选：包含内边距在宽度计算内 */
+}
+
+.anime-edging {
+    width: calc(70% - 20px); /* 每个框占据可用空间的三分之一 */
+    margin-bottom: 20px;
+    padding: 24px;
+    box-sizing: border-box;
+    display: flex; /* 使用弹性盒子来对齐内容 */
+    align-items: center;
+}
+
+.anime-img img {
+    width: 230px;
+    height: 300px;
+    object-fit: cover;
+}
+
+.anime-inform {
+    flex: 1;
+    display: flex;
+    flex-direction: column;/* 让内容垂直排列 */
+	margin-left: 10px;/* 添加一些左边间距，使内容不紧贴图片 */
+}
+
+.anime-title {
+	padding-top: 30px;
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.anime-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 100%; /* 确保它占据整个容器的宽度 */
+    margin: 0 auto;
+}
+
+
+.content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: auto;
+}

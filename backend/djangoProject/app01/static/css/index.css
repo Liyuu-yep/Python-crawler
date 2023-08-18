@@ -1,0 +1,29 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+}
+.container123 a {
+	position: sticky;
+	top: -374px;
+	margin-top: -174px;
+	float: right;
+	width: 150px;
+	height: 174px;
+	background: url("../img/back.png") no-repeat;
+	background-position: -600px 0;
+	z-index: 999;
+	transform: translateY(calc(100vh + 200px));
+}
+.container123 a:hover {
+	animation: back 0.5s steps(5) infinite;
+}
+@keyframes back {
+	from {
+		background-position: 0 0;
+	}
+	to {
+		background-position: -750px 0;
+	}
+}

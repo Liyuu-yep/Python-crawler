@@ -2,88 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>个人中心</title>
+    <link rel="icon" href="../static/img/head123.png">
     <link rel="stylesheet" href="../static/plugins/bootstrap-3.4.1-dist/css/bootstrap.css">
     <link rel="stylesheet" href="../static/css/MainPage.css">
     <link rel="stylesheet" href="../static/css/S-mainPage.css">
     <style>
 
-        .user-box{
-            height: 40px;
-            width: 40px;
-            float: left
-        }
-
-        .user-box:hover{
-            height: 45px;
-            width: 45px;
-        }
-
-
-        img{
-            width: 100%;
-            object-fit: cover;
-        }
-        #header {
-            background-color: rgba(18, 18, 18, 1);
-            color: #fff;
-            text-align: center;
-            padding: 10px;
-        }
-        #menu {
-            display: flex;
-            justify-content: center;
-            background-color: #555;
-            padding: 10px;
-        }
-        .menu-item {
-            margin: 0 20px;
-            color: #fff;
-            cursor: pointer;
-        }
-        #content {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-        }
-        .menu-content {
-            text-align: center;
-            padding: 15px; /* 调整为更大的值 */
-            border-bottom: 1px solid #ccc;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .menu-content h4 {
-            font-size: 24px; /* 调整标题字体大小 */
-            margin: 0;
-        }
-        .menu-content:hover {
-            background-color: #f4f4f4;
-        }
-        .input-box {
-            margin: 10px 0;
-        }
-        label {
-            display: block;
-            font-weight: bold;
-        }
-        input {
-            width: 100%;
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-        }
-        .follow-options {
-            position: absolute;
-            right: 20px;
-            top: 20px;
-            padding: 5px;
-            background-color: #eee;
-            border-radius: 3px;
-        }
     </style>
 </head>
 <body>
@@ -95,8 +20,8 @@
 <!--                    <a class="word2"  style="margin-left: 60px;">首页</a>-->
                     <a class="word2" href="/mainpage2/">个人中心</a>
                     <a class="word2" href="/fanjuinformation/">番剧信息</a>
-                    <a class="word2" href="">数据分析</a>
-                    <a class="word2" href="/ranklist/">总排行榜</a>
+                    <a class="word2" href="/analyse/">数据分析</a>
+                    <a class="word2" href="/afterlogin/">总排行榜</a>
                 </div>
         <div class="right">
             <!--搜索框-->
@@ -108,10 +33,16 @@
             </div>
             <!--搜索框-->
             <!--用户框-->
-            <div class="user-box">
-                <a>
-                    <img src="/static/img/23.jpg" alt="" class="img-circle">
-                </a>
+            <div class="dropdown">
+                <div class="user-box">
+                    <a>
+                        <img src="{{user_profile.profileimg.url}}" alt="" class="img-circle " id="userAvatar">
+                        <div class="dropdown-content">
+                            <a href="/mainpage2/">个人中心</a>
+                            <a href="/mainpage/">注销退出</a>
+                        </div>
+                    </a>
+                </div>
             </div>
 
         </div>
@@ -129,43 +60,58 @@
 </div>
 <div id="content">
     <div id="profile" class="menu-content">
-        <div class="input-box">
-            <label for="username">用户名：</label>
-            <input type="text" id="username">
-        </div>
-        <div class="input-box">
-            <label for="email">邮箱：</label>
-            <input type="email" id="email">
-        </div>
-        <div class="input-box">
-            <label for="phone">手机号码：</label>
-            <input type="tel" id="phone">
-        </div>
+
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="input-box" >
+                <label class="word5" >用户头像：</label>
+                <input type="file" name="image" accept=".jpg, .png">
+
+                <div id="avatarPreview">
+                    <img id="previewImage" src="{{user_profile.profileimg.url}}" class="img-circle" alt="用户头像">
+                </div>
+            </div>
+
+            <div class="input-box">
+                <label for="email" class="word5">用户名：</label>
+                <input type="text" name="username" style="float: right" id="email" value="{{ user_profile.user.username }}">
+                <div style="clear:both"></div>
+                <br>
+            </div>
+            <div>
+                <style>
+                    h5{
+                        color: red;
+                    }
+                </style>
+                {% for message in messages %}
+                    <h5>{{message}}</h5>
+                {% endfor %}
+            </div>
+            <button type="submit">保存</button>
+        </form>
+
+
+
+
     </div>
-    <div id="change-password" class="menu-content" style="display: none;">
-        <div class="input-box">
-            <label for="new-password">请输入新密码：</label>
-            <input type="password" id="new-password">
+    <div id="secure" class="menu-content" style="display: none;">
+
+        <div class="email-section">
+            <div class="email-text">更换邮箱</div>
+            <!--这里预览邮箱-->
+            <div class="email-number">{{ user_profile.user.email }}</div>
+            <a href="/changeemail/"><button class="change-button">更换邮箱</button></a>
         </div>
-        <div class="input-box">
-            <label for="confirm-password">请再次输入新密码：</label>
-            <input type="password" id="confirm-password">
+        <div class="email-section">
+            <div class="email-text">设置密码</div>
+            <div class="email-number">*************</div>
+            <a href="/changepassword/"><button class="change-button">修改密码</button></a>
         </div>
     </div>
     <div id="my-follow" class="menu-content" style="display: none;">
-        <div class="follow-options">
-            <select>
-                <option value="followed">已关注</option>
-                <option value="not-followed">未关注</option>
-            </select>
-        </div>
         <div class="followed-list">
             <!-- 以列表形式显示已关注内容 -->
-        </div>
-        <div class="follow-options">
-            <select>
-                <option value="all">全部关注</option>
-            </select>
         </div>
         <div class="follow-list">
             <!-- 以列表形式显示番剧 -->
@@ -194,16 +140,7 @@
         </div>
     </div>
 </div>
-<script>
-    const menuItems = document.querySelectorAll('.menu-item');
-    const menuContents = document.querySelectorAll('.menu-content');
-
-    menuItems.forEach((item, index) => {
-        item.addEventListener('click', () => {
-            menuContents.forEach(content => content.style.display = 'none');
-            menuContents[index].style.display = 'block';
-        });
-    });
+<script src="../static/js/S-MainPage2.js">
 </script>
 </body>
 </html>
